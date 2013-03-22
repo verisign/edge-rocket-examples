@@ -6,7 +6,6 @@
 
 local renderTemplate = function(template, params)
   for k,v in pairs(params) do
-    -- logger.info("Replacing " .. k .. " with " .. v)
     template = string.gsub(template, k, v)
   end
   return template

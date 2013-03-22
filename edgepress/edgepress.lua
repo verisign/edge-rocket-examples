@@ -7,13 +7,11 @@
 
 local renderTemplate = function(template, params)
   for k,v in pairs(params) do
-    logger.info("Replacing " .. k .. " with " .. v)
     template = string.gsub(template, k, v)
   end
   return template
 end
 
-logger.info("New request from " .. request.getSourceIP())
 
 local host      = request.getHeaderValue(HTTP_HEADER.HOST)
 local template  = db.get("ep-templates", host .. ":main")

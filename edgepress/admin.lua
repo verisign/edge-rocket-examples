@@ -6,7 +6,6 @@ local renderTemplate = function(template, params)
 end
 
 local encodedCredentials = request.getHeaderValue(HTTP_HEADER.AUTHORIZATION)
-logger.info("New request from " .. request.getSourceIP())
 if encodedCredentials ~= "" then
    local encodedDetails = string.gsub(encodedCredentials, "Basic ", "")
    local credentials = base64.decode(encodedDetails)

@@ -20,8 +20,6 @@ else
   if responseData ~= "" then
     -- { "mime_type":"image/png",   TODO: switch to gmatch
     mimeType = string.sub(responseData, 16, 24)
-    logger.info(mimeType)
-    logger.info(string.sub(responseData, 36, -4))
     -- this will return the empty string if the input is not valid Base64 encoded
     responseData = base64.decode(string.sub(responseData, 36, -4))
   end

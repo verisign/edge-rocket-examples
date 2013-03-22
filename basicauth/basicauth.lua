@@ -6,15 +6,11 @@ response.addHeader("Pragma", "no-cache")
 response.addHeader("Expires", "Fri, 01 Jan 1990 00:00:00 GMT")
 
 if encodedCredentials ~= "" then
-   logger.info(encodedCredentials)
    local encodedDetails = string.gsub(encodedCredentials, "Basic ", "")
-   logger.info(encodedDetails)
    local credentials = base64.decode(encodedDetails)
    -- if credentials is empty then it means that the details were not a valid Base64 encoding
    if credentials ~= "" then
-      logger.info(credentials)
       local username, password = string.match(credentials, "(%w+):(%w+)")
-      logger.info(username .. ":" .. password)
       local compare = db.get("auth", username)
 
       if compare == password then
